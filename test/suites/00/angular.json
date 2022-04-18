@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "projects": {
+    "one": {
+      "projectType": "application",
+      "i18n": {
+        "locales": {
+          "en": {
+            "translation": "locale/one.en.xlf"
+          }
+        }
+      },
+      "sourceRoot": "one"
+    },
+    "two": {
+      "projectType": "application",
+      "i18n": {
+        "locales": {
+          "en": {
+            "translation": ["locale/two.en.xlf", "locale/common.en.xlf"]
+          }
+        }
+      },
+      "sourceRoot": "two"
+    },
+    "lib": {
+      "projectType": "library",
+      "sourceRoot": "libs"
+    }
+  }
+}

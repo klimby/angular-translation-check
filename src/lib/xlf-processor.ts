@@ -1,25 +1,30 @@
 import LineByLine from 'n-readlines';
 import * as path from 'path';
-import { LocaleName, Project } from '../types/angular-json';
-import { AppXlf } from '../types/app-xlf';
+import { AppXlf, TranslateIdsMap } from '../types/app-xlf';
 import { FilePosition, Id } from '../types/common';
+import { Constants } from './constants';
 import report from './report';
 
-class Xlf implements AppXlf {
+class XlfProcessor implements AppXlf {
 
-  readonly translateIdsMap: Map<Id, FilePosition[]> = new Map<Id, FilePosition[]>([]);
+  private readonly _translateIdsMap: TranslateIdsMap = new Map<Id, FilePosition[]>([]);
   private readonly _duplicateIdsMap: Map<Id, FilePosition[]> = new Map<Id, FilePosition[]>([]);
 
-  constructor(
-      public locale: LocaleName,
-      public project: Project,
-      private _translationFiles: string[]) {
+  /**
+   * Get translate files ids map
+   */
+  getTranslateIdsMap(): TranslateIdsMap {
+    return this._translateIdsMap;
   }
 
-  parse(): void {
+  /**
+   * PArse translation files
+   * @param translationFiles array of translation files paths
+   */
+  parse(translationFiles: string[]): void {
     const regexp = /<trans-unit.+id=["'](.+?)["']/i;
 
-    for (const file of this._translationFiles) {
+    for (const file of translationFiles) {
       const fileName: string = path.basename(file);
 
       let liner: LineByLine;
@@ -37,11 +42,16 @@ class Xlf implements AppXlf {
         const match = str.match(regexp);
         if (match?.[1]) {
           const id: Id = match[1];
+          if(id === Constants.NoneKey) {
+            lineNumber++;
+            line = liner.next();
+            continue;
+          }
           const filePosition: FilePosition = { fileName, line: lineNumber };
-          const fp: FilePosition[] = this.translateIdsMap.get(id) ?? [];
+          const fp: FilePosition[] = this._translateIdsMap.get(id) ?? [];
           const isExists = !!fp.length;
           fp.push(filePosition);
-          this.translateIdsMap.set(id, fp);
+          this._translateIdsMap.set(id, fp);
           if (isExists) {
             this._duplicateIdsMap.set(id, fp);
           }
@@ -52,24 +62,23 @@ class Xlf implements AppXlf {
     }
   }
 
+  /**
+   * Duplicate report
+   */
   report(): void {
     if (this._duplicateIdsMap.size) {
-      report.warning(`\nProject: ${this.project}`);
-      report.warning(`Locale: ${this.locale}`);
+      report.warning('\nFind duplicates in language files:');
       for (const [id, filePositions] of this._duplicateIdsMap) {
         report.warning(`\n\tID: ${id}`);
         for (const filePosition of filePositions) {
           report.warning(`\t- ${filePosition.fileName}. Line: ${filePosition.line}`);
         }
-
       }
     } else {
-      report.success(`\nProject: ${this.project}`);
-      report.success(`Locale: ${this.locale}`);
-      report.success('No duplicates found in language files.');
+      report.success('\nNo duplicates found in language files.');
     }
   }
 
 }
 
-export const xlfFactory = (locale: LocaleName, project: Project, translationFiles: string[]) => new Xlf(locale, project, translationFiles);
+export const xlfFactory = (): AppXlf => new XlfProcessor();

@@ -3,6 +3,11 @@
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
 
+      <trans-unit id="none" datatype="html">
+        <source>one ываыва</source>
+        <target>one</target>
+      </trans-unit>
+
       <trans-unit id="one:one" datatype="html">
         <source>one ываыва</source>
         <target>one</target>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+
+      <trans-unit id="none" datatype="html">
+        <source>Требуется перевод</source>
+        <target>Translation required</target>
+      </trans-unit>
+
+      <!-- COMMON -->
+
+      <trans-unit id="two:one" datatype="html">
+        <source>Создать копию</source>
+        <target>Duplicate</target>
+      </trans-unit>
+
+      <trans-unit id="one:two" datatype="html">
+        <source>О программе</source>
+        <target>About the program</target>
+      </trans-unit>
+
+      <trans-unit id="two:two" datatype="html">
+        <source>О программе</source>
+        <target>About the program</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

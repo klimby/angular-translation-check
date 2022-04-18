@@ -1,7 +1,4 @@
 process.env.NODE_ENV = 'testing';
-process.env.npm_package_version = '1.0.0';
-process.env.npm_package_name = 'express-skeleton';
-process.env.HOSTNAME = 'node-server';
 module.exports = {
   clearMocks: true,
   collectCoverage: false,

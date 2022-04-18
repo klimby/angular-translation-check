@@ -7,12 +7,10 @@ export interface AngularJson {
     /**
      * Project name
      */
-    [key: Project]: AngularJsonProject
+    [key: string]: AngularJsonProject
   };
 }
 
-export type LocaleName = string;
-export type Project = string;
 
 export interface AngularJsonProject {
   /**
@@ -31,7 +29,7 @@ export interface AngularJsonProject {
       /**
        * Locale name
        */
-      [key: LocaleName]: {
+      [key: string]: {
         /**
          * Translation xlf file path from app root.
          * Example: locale/messages.en.xlf
@@ -45,10 +43,4 @@ export interface AngularJsonProject {
 export enum AngularProjectType {
   Application = 'application',
   Library = 'library'
-}
-
-
-export interface ProjectTranslation {
-  name: Project;
-  translations: string[];
 }

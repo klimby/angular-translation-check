@@ -5,12 +5,18 @@ import { CommandLine } from './types/common';
 const cmdParser = function(args: string[]): CommandLine {
   yargs(hideBin(args))
       .option('project', {
-        alias: 'p',
+        default: '',
+        string: true,
+      })
+      .option('locale', {
+        default: '',
+        string: true,
+      })
+      .option('root', {
         default: '',
         string: true,
       })
       .option('libs', {
-        alias: 'l',
         default: [],
         array: true,
       })

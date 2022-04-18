@@ -1,39 +1,33 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-//const angularTranslationCheck = require('../dist/index');
+import cmdParser from '../src/command';
 
-import angularTranslationCheck from '../src';
-import report from '../src/lib/report';
-import { ProjectTranslation } from '../src/types/angular-json';
+describe('command test', () => {
 
-describe('index test', () => {
+  it('test command arg', () => {
 
-  it('test error', async () => {
-    jest.spyOn(report, 'error')
-        .mockImplementation();
+    const arg: string[] = [
+      '/home/klim/.nvm/versions/node/v14.18.2/bin/node',
+      '/home/klim/Projects/angular-translation-check/bin/cli.js',
+      '--project',
+      'app',
+      '--locale',
+      'en',
+      '--root',
+      'rootDir',
+      '--libs',
+      'lib1',
+      'lib2',
 
-    await angularTranslationCheck([]);
-    expect(report.error)
-        .toBeCalledTimes(1);
-  });
+    ];
 
-  it('test OK', async () => {
-
-    jest.mock('../src/lib/config', () => {
-      return jest.fn()
-          .mockImplementation(() => {
-            return {
-              projectTranslations: new Map<string, ProjectTranslation[]>([]),
-              loadAngularJson: jest.fn(),
-            };
-          });
-    });
-
-    jest.spyOn(report, 'error')
-        .mockImplementation();
-
-    await angularTranslationCheck([]);
-    expect(report.error)
-        .toBeCalledTimes(0);
+    const argv = cmdParser(arg);
+    expect(argv).toHaveProperty('project');
+    expect(argv).toHaveProperty('libs');
+    expect(argv).toHaveProperty('locale');
+    expect(argv).toHaveProperty('root');
+    expect(argv.project).toEqual('app');
+    expect(argv.libs).toEqual(['lib1', 'lib2']);
+    expect(argv.locale).toEqual('en');
+    expect(argv.root).toEqual('rootDir');
   });
 
 });

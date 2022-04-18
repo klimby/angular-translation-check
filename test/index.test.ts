@@ -1,25 +1,38 @@
-import cmdParser from '../src/command';
+import angularTranslationCheck from '../src';
+import report from '../src/lib/report';
 
-describe('command test', () => {
+describe('index test', () => {
 
-  it('test command arg', () => {
 
-    const arg: string[] = [
-      '/home/klim/.nvm/versions/node/v14.18.2/bin/node',
-      '/home/klim/Projects/angular-translation-check/bin/cli.js',
+  it('test error', async () => {
+
+    jest.spyOn(report, 'error')
+        .mockImplementation();
+    await angularTranslationCheck([]);
+    expect(report.error)
+        .toBeCalledTimes(1);
+  });
+
+  it('test Ok', async () => {
+
+    jest.spyOn(report, 'error')
+        .mockImplementation();
+    jest.spyOn(console, 'log')
+        .mockImplementation();
+    await angularTranslationCheck([
       '--project',
-      'app',
+      'one',
+      '--locale',
+      'en',
+      '--root',
+      'test/suites/01',
       '--libs',
-      'lib1',
-      'lib2',
-
-    ];
-
-    const argv = cmdParser(arg);
-    expect(argv).toHaveProperty('project');
-    expect(argv).toHaveProperty('libs');
-    expect(argv.project).toEqual('app');
-    expect(argv.libs).toEqual(['lib1', 'lib2']);
+      'lib',
+    ]);
+    expect(report.error)
+        .toBeCalledTimes(0);
+    expect(console.log)
+        .toBeCalled();
   });
 
 });

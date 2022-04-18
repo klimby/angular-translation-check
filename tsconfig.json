@@ -8,6 +8,8 @@
         "lib": ["es2020"],
         "module": "commonjs",
         "target": "es6",
+        "moduleResolution": "node",
+        "types": ["node", "jest"],
         // "sourceMap": true,
         
         "strict": true,
