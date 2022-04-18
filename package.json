@@ -1,6 +1,6 @@
 {
     "name": "@klimby/angular-translation-check",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "description": "Check Angular translation file",
     "bin": "bin/cli.js",
     "main": "dist",
