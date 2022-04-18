@@ -10,6 +10,7 @@
         "release": "bin/cli.js --project one --libs lib --locale en --root test/suites/00",
         "lint": "eslint --cache --ext .ts .",
         "test": "jest --config=jest.config.js",
+        "coverage": "jest --config=jest-coverage.config.js",
         "======= STANDARD VERSION SECTION =======": "",
         "major": "standard-version --release-as major",
         "major-dry": "standard-version --release-as major --dry-run",
@@ -25,11 +26,15 @@
     "publishConfig": {
         "access": "public"
     },
+    "engines": {
+        "node": ">=12"
+    },
     "keywords": [
         "node.js",
         "Angular",
         "Work with translation files",
-        "Typescript"
+        "Typescript",
+        "Angular Internationalization"
     ],
     "author": {
         "name": "Alexander Klimov",
@@ -41,6 +46,12 @@
         "url": "https://github.com/klimby/angular-translation-check/issues"
     },
     "homepage": "https://github.com/klimby/angular-translation-check#readme",
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "glob": "^8.0.1",
+        "n-readlines": "^1.0.1",
+        "yargs": "^17.4.1"
+    },
     "devDependencies": {
         "@types/glob": "^7.2.0",
         "@types/jest": "^27.4.1",
@@ -53,13 +64,7 @@
         "ts-jest": "^27.1.4",
         "ts-node": "^10.7.0",
         "ts-node-dev": "^1.1.8",
-        "typescript": "^4.6.3"
-    },
-    "dependencies": {
-        "@types/n-readlines": "^1.0.3",
-        "chalk": "^4.1.2",
-        "glob": "^8.0.1",
-        "n-readlines": "^1.0.1",
-        "yargs": "^17.4.1"
+        "typescript": "^4.6.3",
+        "@types/n-readlines": "^1.0.3"
     }
 }
