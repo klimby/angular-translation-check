@@ -1,13 +1,13 @@
 {
     "name": "@klimby/angular-translation-check",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "Check Angular translation file",
     "bin": "bin/cli.js",
     "main": "dist",
     "scripts": {
         "clean": "rimraf dist/*",
         "build": "tsc",
-        "release": "bin/cli.js --project aaa --libs asd asf",
+        "release": "bin/cli.js --project one --libs lib --locale en --root test/suites/00",
         "lint": "eslint --cache --ext .ts .",
         "test": "jest --config=jest.config.js",
         "publish": "npm publish",
@@ -43,6 +43,7 @@
     },
     "homepage": "https://github.com/klimby/angular-translation-check#readme",
     "devDependencies": {
+        "@types/glob": "^7.2.0",
         "@types/jest": "^27.4.1",
         "@types/yargs": "^17.0.10",
         "@typescript-eslint/eslint-plugin": "^5.19.0",
@@ -58,6 +59,7 @@
     "dependencies": {
         "@types/n-readlines": "^1.0.3",
         "chalk": "^4.1.2",
+        "glob": "^8.0.1",
         "n-readlines": "^1.0.1",
         "yargs": "^17.4.1"
     }
