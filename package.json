@@ -1,6 +1,6 @@
 {
     "name": "@klimby/angular-translation-check",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Check Angular translation file",
     "bin": "bin/cli.js",
     "main": "dist",
@@ -10,7 +10,6 @@
         "release": "bin/cli.js --project one --libs lib --locale en --root test/suites/00",
         "lint": "eslint --cache --ext .ts .",
         "test": "jest --config=jest.config.js",
-        "publish": "npm publish",
         "======= STANDARD VERSION SECTION =======": "",
         "major": "standard-version --release-as major",
         "major-dry": "standard-version --release-as major --dry-run",
