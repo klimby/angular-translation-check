@@ -1,5 +1,5 @@
 ![MIT license](https://img.shields.io/badge/license-MIT-green.svg?style=plastic "MIT")
-![Version v0.0.15](https://img.shields.io/badge/version-v0.0.15-blue.svg?style=plastic "Version v0.0.15")
+![Version v0.0.16](https://img.shields.io/badge/version-v0.0.16-blue.svg?style=plastic "Version v0.0.16")
 
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
