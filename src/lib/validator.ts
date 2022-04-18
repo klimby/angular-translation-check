@@ -70,7 +70,7 @@ class Validator implements AppValidator {
 
     if (this._htmlNotFoundIdsMap.size) {
       report.warning('\nMissing translation for ids:');
-      for (const [id, filePositions] of this._xlfNotFoundIdsMap) {
+      for (const [id, filePositions] of this._htmlNotFoundIdsMap) {
         report.warning(`\n\tID: ${id}`);
         for (const filePosition of filePositions) {
           report.warning(`\t- ${filePosition.fileName}. Line: ${filePosition.line}`);
