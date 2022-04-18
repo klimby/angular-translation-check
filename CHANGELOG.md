@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/klimby/angular-translation-check/compare/v1.0.0...v1.0.1) (2022-04-18)
+
+
+### Bug Fixes
+
+* validator report ([169dd4e](https://github.com/klimby/angular-translation-check/commit/169dd4e0a8ccab113c2719d8b3fcf3c269536420))
+
 ## [1.0.0](https://github.com/klimby/angular-translation-check/compare/v0.1.0...v1.0.0) (2022-04-18)
 
 ## [0.1.0](https://github.com/klimby/angular-translation-check/compare/v0.0.17...v0.1.0) (2022-04-18)
